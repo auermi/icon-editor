@@ -22,7 +22,6 @@ const logo = document.getElementById('logo')
 
 // Generate menu based on available icons
 const logos = fs.readdirSync(__dirname + '/logos').filter((x) => {
-  if (err) throw error
   return x.charAt(0) !== '.'
 }).map((x) => {
   return x.replace('.svg', '')
