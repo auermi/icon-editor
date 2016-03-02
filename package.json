@@ -1,26 +1,21 @@
 {
-  "name": "ecrivez",
-  "version": "0.0.1",
-  "description": "A simple text editor",
+  "name": "icongenerator",
+  "version": "0.1.0",
+  "description": "Generate icons based on user input",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/auermi/ecrivez"
+    "url": "git+https://github.com/auermi/icon-editor"
   },
-  "keywords": [
-    "ecrivez",
-    "writing",
-    "notes"
-  ],
   "author": "Michael Auer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/auermi/ecrivez/issues"
+    "url": "https://github.com/auermi/icon-editor/issues"
   },
-  "homepage": "https://github.com/auermi/ecrivez",
+  "homepage": "https://github.com/auermi/icon-editor",
   "devDependencies": {
     "electron-prebuilt": "^0.36.0"
   }
