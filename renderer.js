@@ -11,6 +11,8 @@ const logoColor = document.getElementById('logoColor')
 const backgroundColor = document.getElementById('backgroundColor')
 const colorButton = document.getElementById('colorButton')
 const logo = document.getElementById('logo')
+const radius = document.getElementById('radius')
+const radiusLabel = document.getElementById('radiusLabel')
 
 // Generate menu based on available icons
 const logos = fs.readdirSync(__dirname + '/logos').filter((x) => {
@@ -42,8 +44,19 @@ var applyStyles = () => {
     if (logoSelect.value === logoSelect.children[0].value) {
       return
     }
-    document.querySelector('#logo path').style.fill = '#' + logoColor.value
-    document.querySelector('#logo rect').style.fill = '#' + backgroundColor.value
+
+    // Reference bg rect and shape path
+    const shape = document.querySelector('#logo path')
+    const rect = document.querySelector('#logo rect')
+
+    // Color fills
+    shape.style.fill = '#' + logoColor.value
+    rect.style.fill = '#' + backgroundColor.value
+
+    // Border Radius
+    rect.setAttribute('rx', radius.value)
+    rect.setAttribute('ry', radius.value)
+    radiusLabel.innerText = radius.value
   }
 }
 
