@@ -1,21 +1,9 @@
 'use strict'
-
-const remote = require('remote')
-const Menu = remote.require('menu')
 const fs = require('fs')
+const menu = require('./menu.js')
 
-// Menu Generation
-var menu = Menu.buildFromTemplate([
-  {
-    submenu: [
-      {
-        label: 'About',
-        click: () => { /* Would open an about page */ }
-      }
-    ]
-  }
-])
-Menu.setApplicationMenu(menu)
+// Initialize Menu
+menu.init()
 
 // DOM Refernces
 const logoSelect = document.getElementById('logoSelect')
