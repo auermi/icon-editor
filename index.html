@@ -11,8 +11,12 @@
   </head>
   <body>
     <select id="logoSelect">
-      <option>--Select One--</select>
+      <option disabled selected>--Select One--</select>
     </select>
+    <br>
+    <label>Logo Color</label><input type="text" id="logoColor"><br>
+    <label>Background Color</label><input type="text" id="backgroundColor"><br>
+    <button id="colorButton">Fill</button>
     <div id="logo"></div>
     <script>require('./renderer.js')</script>
   </body>
