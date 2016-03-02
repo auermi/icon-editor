@@ -4,7 +4,7 @@ const electron = require('electron')
 const app = electron.app
 const BrowserWindow = require('browser-window')
 
-app.on('ready', function() {
+app.on('ready', () => {
   // New Browser Window
   const mainWindow = new BrowserWindow({
       width: 800,
