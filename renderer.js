@@ -1,6 +1,7 @@
 'use strict'
 const fs = require('fs')
 const menu = require('./menu.js')
+const gm = require('gm')
 
 // Initialize Menu
 menu.init()
@@ -10,6 +11,7 @@ const logoSelect = document.getElementById('logoSelect')
 const logoColor = document.getElementById('logoColor')
 const backgroundColor = document.getElementById('backgroundColor')
 const colorButton = document.getElementById('colorButton')
+const saveButton = document.getElementById('saveButton')
 const logo = document.getElementById('logo')
 const radius = document.getElementById('radius')
 const radiusLabel = document.getElementById('radiusLabel')
@@ -62,3 +64,21 @@ var applyStyles = () => {
 
 // Apply styles on click
 colorButton.addEventListener('click', applyStyles())
+
+// Save PNG after hitting the save button
+saveButton.addEventListener('click', () => {
+  saveIcon(logo.innerHTML, 'icon.svg')
+})
+
+// Save image to PNG
+function saveIcon(svg, fileName) {
+  // Write to SVG
+  fs.writeFileSync(fileName, svg)
+  // Write to PNG fom SVG
+  gm(fileName)
+  .write('icon.png', (err) => {
+    if (err) throw (err)
+    // Delete the SVG
+    fs.unlink(fileName)
+  })
+}

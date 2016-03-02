@@ -18,5 +18,8 @@
   "homepage": "https://github.com/auermi/icon-editor",
   "devDependencies": {
     "electron-prebuilt": "^0.36.0"
+  },
+  "dependencies": {
+    "gm": "^1.21.1"
   }
 }
