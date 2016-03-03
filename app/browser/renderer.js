@@ -13,7 +13,6 @@ const backgroundColor = document.getElementById('backgroundColor')
 const backgroundIsActive = document.getElementById('backgroundIsActive')
 const backgroundIsCircle = document.getElementById('backgroundIsCircle')
 const colorButton = document.getElementById('colorButton')
-const saveButton = document.getElementById('saveButton')
 const logo = document.getElementById('logo')
 const radius = document.getElementById('radius')
 const radiusLabel = document.getElementById('radiusLabel')
@@ -76,7 +75,7 @@ var applyStyles = () => {
 
     // Fill logo
     shape.style.fill = '#' + logoColor.value
-    
+
     // Radius label is equal to slider value
     radiusLabel.innerText = radius.value
   }
@@ -84,8 +83,3 @@ var applyStyles = () => {
 
 // Apply styles on click
 colorButton.addEventListener('click', applyStyles())
-
-// Save PNG after hitting the save button
-saveButton.addEventListener('click', () => {
-  ipcRenderer.send('save', logo.innerHTML)
-})

@@ -1,5 +1,6 @@
 const remote = require('remote')
 const Menu = remote.require('menu')
+const ipcRenderer = require('electron').ipcRenderer
 
 var init = function() {
   // Menu Generation
@@ -9,6 +10,17 @@ var init = function() {
         {
           label: 'About',
           click: () => { /* Would open an about page */ }
+        }
+      ]
+    },
+    {
+      label: 'File',
+      submenu: [
+        {
+          label: 'Save',
+          click: () => {
+            ipcRenderer.send('save', logo.innerHTML)
+          }
         }
       ]
     }
