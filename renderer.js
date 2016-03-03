@@ -2,6 +2,7 @@
 const fs = require('fs')
 const menu = require('./menu.js')
 const gm = require('gm')
+const ipcRenderer = require('electron').ipcRenderer
 
 // Initialize Menu
 menu.init()
@@ -67,18 +68,5 @@ colorButton.addEventListener('click', applyStyles())
 
 // Save PNG after hitting the save button
 saveButton.addEventListener('click', () => {
-  saveIcon(logo.innerHTML, 'icon.svg')
+  ipcRenderer.send('save', logo.innerHTML)
 })
-
-// Save image to PNG
-var saveIcon = (svg, fileName) => {
-  // Write to SVG
-  fs.writeFileSync(fileName, svg)
-  // Write to PNG fom SVG
-  gm(fileName)
-  .write('icon.png', (err) => {
-    if (err) throw (err)
-    // Delete the SVG
-    fs.unlink(fileName)
-  })
-}
