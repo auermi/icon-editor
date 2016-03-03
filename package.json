@@ -2,7 +2,7 @@
   "name": "icongenerator",
   "version": "0.1.0",
   "description": "Generate icons based on user input",
-  "main": "main.js",
+  "main": "app/src/main.js",
   "scripts": {
     "start": "electron ."
   },

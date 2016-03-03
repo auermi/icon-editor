@@ -1,6 +1,6 @@
 'use strict'
 const fs = require('fs')
-const menu = require('./menu.js')
+const menu = require('../src/menu.js')
 const ipcRenderer = require('electron').ipcRenderer
 
 // Initialize Menu
@@ -17,7 +17,7 @@ const radius = document.getElementById('radius')
 const radiusLabel = document.getElementById('radiusLabel')
 
 // Generate menu based on available icons
-const logos = fs.readdirSync(__dirname + '/logos').filter((x) => {
+const logos = fs.readdirSync(__dirname + '/../assets/logos').filter((x) => {
   // Don't want system files
   return x.charAt(0) !== '.'
 }).map((x) => {
@@ -32,7 +32,7 @@ const logos = fs.readdirSync(__dirname + '/logos').filter((x) => {
 
 // When a new logo is selected, inject it
 logoSelect.addEventListener('change', () => {
-  const uri = __dirname + '/logos/' + logoSelect.value + '.svg'
+  const uri = __dirname + '/../assets/logos/' + logoSelect.value + '.svg'
   logo.innerHTML = fs.readFileSync(uri, 'utf-8', (err,data) => {
     if (err) throw error
     return data

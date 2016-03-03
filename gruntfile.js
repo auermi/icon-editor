@@ -9,14 +9,14 @@ module.exports = function(grunt) {
                     noCache: true
                 },
                 files: {
-                    'assets/master.css': 'assets/stylesheets/master.scss'
+                    'app/master.css': 'scss/master.scss'
                 }
             }
         },
         cssmin: {
             target: {
                 files: {
-                    'assets/master.css': 'assets/master.css'
+                    'app/master.css': 'app/master.css'
                 }
             }
         },
