@@ -71,7 +71,7 @@ saveButton.addEventListener('click', () => {
 })
 
 // Save image to PNG
-function saveIcon(svg, fileName) {
+var saveIcon = (svg, fileName) => {
   // Write to SVG
   fs.writeFileSync(fileName, svg)
   // Write to PNG fom SVG
