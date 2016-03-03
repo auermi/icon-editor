@@ -36,4 +36,12 @@ app.on('ready', () => {
       })
     })
   })
+  ipcMain.on('about', () => {
+    const date = new Date()
+    dialog.showMessageBox({
+      message: 'Icon Generator by Michael Auer',
+      detail: 'Thank you for using Icon Generator. Copyright ' + date.getFullYear(),
+      buttons: ['Close']
+    })
+  })
 })

@@ -9,7 +9,7 @@ var init = function() {
       submenu: [
         {
           label: 'About',
-          click: () => { /* Would open an about page */ }
+          click: () => { ipcRenderer.send('about') }
         }
       ]
     },
@@ -18,9 +18,7 @@ var init = function() {
       submenu: [
         {
           label: 'Save',
-          click: () => {
-            ipcRenderer.send('save', logo.innerHTML)
-          }
+          click: () => { ipcRenderer.send('save', logo.innerHTML) }
         }
       ]
     }
