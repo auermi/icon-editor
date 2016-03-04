@@ -11,7 +11,7 @@ var save = (arg) => {
       // If we have filename
       if (fileName) {
         // Does a file with the same name exist already?
-        if (fs.readFile(fileName + '.png', (err, data) => { return err }) !== null) {
+        if (fs.readFile(fileName + '.png', (err, data) => err) !== null) {
           // It exists, show pop up -> if yes continue overrwrite, if no, cancel
           dialog.showMessageBox({
             message: 'File with name: ' + fileName + '.png already exists',
