@@ -17,8 +17,9 @@ const logo = document.getElementById('logo')
 const radius = document.getElementById('radius')
 const radiusLabel = document.getElementById('radiusLabel')
 
+const logosURI = __dirname + '/../res/logos/'
 // Generate menu based on available icons
-const logos = fs.readdirSync(__dirname + '/../assets/logos').filter((x) => {
+const logos = fs.readdirSync(logosURI).filter((x) => {
   // Don't want system files
   return x.charAt(0) !== '.'
 }).map((x) => {
@@ -33,7 +34,7 @@ const logos = fs.readdirSync(__dirname + '/../assets/logos').filter((x) => {
 
 // When a new logo is selected, inject it
 logoSelect.addEventListener('change', () => {
-  const uri = __dirname + '/../assets/logos/' + logoSelect.value + '.svg'
+  const uri = logosURI + logoSelect.value + '.svg'
   logo.innerHTML = fs.readFileSync(uri, 'utf-8', (err,data) => {
     if (err) throw error
     return data
