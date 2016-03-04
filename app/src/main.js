@@ -23,20 +23,34 @@ app.on('ready', () => {
   // Renderer Listeners
   ipcMain.on('save', (event, arg) => {
     const svg = arg
+    // If we have an svg
     if (svg !== '') {
       // Save pop up
       dialog.showSaveDialog((fileName) => {
-        // Write to SVG
-        const localuri = __dirname + '/../.cache/icon.svg'
-        console.log(localuri)
-        fs.writeFileSync(localuri, svg)
-        // Write to PNG fom SVG
-        gm(localuri)
-        .write(fileName + '.png', (err) => {
-          if (err) throw (err)
-          // Delete the SVG
-          fs.unlink(localuri)
-        })
+        // Does a file with the same name exist already?
+        if (fs.readFile(fileName + '.png', (err, data) => { return err }) !== null) {
+          // It exists, show pop up -> if yes continue overrwrite, if no, cancel
+          dialog.showMessageBox({
+            message: 'File with name: ' + fileName + '.png already exists',
+            detail: 'Do you want to overwrite it?',
+            buttons: ['Yes', 'No']
+          }, (response) => {
+            if (response === 1) {
+              return
+            } else {
+              // Write to SVG
+              const localuri = __dirname + '/../.cache/icon.svg'
+              fs.writeFileSync(localuri, svg)
+              // Write to PNG fom SVG
+              gm(localuri)
+              .write(fileName + '.png', (err) => {
+                if (err) throw (err)
+                // Delete the SVG
+                fs.unlink(localuri)
+              })
+            }
+          })
+        }
       })
     } else {
       dialog.showMessageBox({
