@@ -4,6 +4,7 @@ const gm = require('gm')
 
 var save = (arg) => {
   const svg = arg
+  const localuri = __dirname + '/../.cache/icon.svg'
   // If we have an svg
   if (svg !== '') {
     // Save pop up
@@ -11,31 +12,23 @@ var save = (arg) => {
       // If we have filename
       if (fileName) {
         // Does a file with the same name exist already?
-        if (fs.readFile(fileName + '.png', (err, data) => err) !== null) {
-          // It exists, show pop up -> if yes continue overrwrite, if no, cancel
-          dialog.showMessageBox({
-            message: 'File with name: ' + fileName + '.png already exists',
-            detail: 'Do you want to overwrite it?',
-            buttons: ['Yes', 'No']
-          }, (response) => {
-            if (response === 1) {
-              return
-            } else {
-              // Write to SVG
-              const localuri = __dirname + '/../.cache/icon.svg'
-              fs.writeFileSync(localuri, svg)
-              // Write to PNG fom SVG
-              gm(localuri)
-              .write(fileName + '.png', (err) => {
-                if (err) throw (err)
-                // Delete the SVG
-                fs.unlink(localuri)
+          // console.log(fs.readFile(fileName + '.png', (err, data) => { return err }))
+          fs.readFile(fileName + '.png', (err, data) => {
+            if (!err) {
+              // It exists, show pop up -> if yes continue overrwrite, if no, cancel
+              dialog.showMessageBox({
+                message: 'File with name: ' + fileName + '.png already exists',
+                detail: 'Do you want to overwrite it?',
+                buttons: ['Yes', 'No']
+              }, (response) => {
+                if (response !== 1) {
+                  writeToPNG(fileName, localuri, svg)
+                }
               })
+            } else {
+              writeToPNG(fileName, localuri, svg)
             }
           })
-        }
-      } else {
-        return // Hit cancel on save dialog
       }
     })
   } else {
@@ -46,6 +39,18 @@ var save = (arg) => {
       buttons: ['Ok']
     })
   }
+}
+
+var writeToPNG = (fileName, localuri, svg) => {
+  // Write to SVG
+  fs.writeFileSync(localuri, svg)
+  // Write to PNG fom SVG
+  gm(localuri)
+  .write(fileName + '.png', (err) => {
+    if (err) throw (err)
+    // Delete the SVG
+    fs.unlink(localuri)
+  })
 }
 
 exports.save = save
