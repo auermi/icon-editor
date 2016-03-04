@@ -1,6 +1,6 @@
 {
   "name": "icongenerator",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Generate icons based on user input",
   "main": "app/src/main.js",
   "scripts": {
