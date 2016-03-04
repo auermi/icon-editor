@@ -6,6 +6,7 @@ const BrowserWindow = require('browser-window')
 const dialog = electron.dialog
 const ipcMain = electron.ipcMain
 const Save = require('./save.js')
+const Logos = require('./logos.js').logos
 
 app.on('ready', () => {
   // New Browser Window
@@ -17,8 +18,13 @@ app.on('ready', () => {
   mainWindow.loadURL('file://' + __dirname + '/../index.html')
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
+  // Generate list of logos
+  const logosURI = __dirname + '/../res/logos/'
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.webContents.send('getAllLogos', Logos.getAll(logosURI))
+  })
   // Renderer Listeners
   ipcMain.on('save', (event, arg) => {
     Save.save(arg)

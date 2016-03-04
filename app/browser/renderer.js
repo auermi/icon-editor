@@ -18,18 +18,15 @@ const radius = document.getElementById('radius')
 const radiusLabel = document.getElementById('radiusLabel')
 
 const logosURI = __dirname + '/../res/logos/'
+
 // Generate menu based on available icons
-const logos = fs.readdirSync(logosURI).filter((x) => {
-  // Don't want system files
-  return x.charAt(0) !== '.'
-}).map((x) => {
-  // Clean names without file extension
-  return x.replace('.svg', '')
-}).forEach((x) => {
-  // Append an option to the select element
-  const node = document.createElement('OPTION')
-  node.appendChild(document.createTextNode(x))
-  logoSelect.appendChild(node)
+ipcRenderer.on('getAllLogos', (event, message) => {
+  message.forEach((x) => {
+    // Append an option to the select element
+    const node = document.createElement('OPTION')
+    node.appendChild(document.createTextNode(x))
+    logoSelect.appendChild(node)
+  })
 })
 
 // When a new logo is selected, inject it
