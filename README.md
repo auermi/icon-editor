@@ -8,7 +8,15 @@ In the project directory, run:
 ```bash
 npm install
 ```
-then:
+If you don't have Grunt installed globally:
+```bash
+npm install -g grunt-cli
+```
+Run the Grunt command once to generate the stylesheet:
+```bash
+grunt
+```
+then run the app:
 ```bash
 npm start
 ```
