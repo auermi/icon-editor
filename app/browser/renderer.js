@@ -1,6 +1,6 @@
 'use strict'
 const fs = require('fs')
-const menu = require('../src/menu.js')
+const menu = require('./menu.js')
 const ipcRenderer = require('electron').ipcRenderer
 
 // Initialize Menu
