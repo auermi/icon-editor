@@ -37,3 +37,6 @@ node_modules
 
 # Cached SVGs
 app/.cache/*.svg
+
+# Generated CSS File
+app/master.css
