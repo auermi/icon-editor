@@ -18,6 +18,7 @@ var init = function() {
       submenu: [
         {
           label: 'Save',
+          accelerator: 'CmdOrCtrl+S',
           click: () => { ipcRenderer.send('save', logo.innerHTML) }
         }
       ]
