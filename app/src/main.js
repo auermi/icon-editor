@@ -27,13 +27,15 @@ app.on('ready', () => {
       // Save pop up
       dialog.showSaveDialog((fileName) => {
         // Write to SVG
-        fs.writeFileSync(fileName + '.svg', svg)
+        const localuri = __dirname + '/../.cache/icon.svg'
+        console.log(localuri)
+        fs.writeFileSync(localuri, svg)
         // Write to PNG fom SVG
-        gm(fileName + '.svg')
+        gm(localuri)
         .write(fileName + '.png', (err) => {
           if (err) throw (err)
           // Delete the SVG
-          fs.unlink(fileName + '.svg')
+          fs.unlink(localuri)
         })
       })
     } else {
