@@ -1,5 +1,4 @@
 'use strict'
-const fs = require('fs')
 const menu = require('./menu.js')
 const ipcRenderer = require('electron').ipcRenderer
 
@@ -17,8 +16,6 @@ const logo = document.getElementById('logo')
 const radius = document.getElementById('radius')
 const radiusLabel = document.getElementById('radiusLabel')
 
-const logosURI = __dirname + '/../res/logos/'
-
 // Generate menu based on available icons
 ipcRenderer.on('getAllLogos', (event, message) => {
   message.forEach((x) => {
@@ -31,10 +28,9 @@ ipcRenderer.on('getAllLogos', (event, message) => {
 
 // When a new logo is selected, inject it
 logoSelect.addEventListener('change', () => {
-  const uri = logosURI + logoSelect.value + '.svg'
-  logo.innerHTML = fs.readFileSync(uri, 'utf-8', (err,data) => {
-    if (err) throw error
-    return data
+  ipcRenderer.send('getSVG', logoSelect.value)
+  ipcRenderer.on('sendLogoSVG', (event, message) => {
+    logo.innerHTML = message
   })
 })
 

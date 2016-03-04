@@ -29,6 +29,10 @@ app.on('ready', () => {
   ipcMain.on('save', (event, arg) => {
     Save.save(arg)
   })
+  ipcMain.on('getSVG', (event, arg) => {
+    const uri = logosURI + arg + '.svg'
+    mainWindow.webContents.send('sendLogoSVG', Logos.getSVG(uri))
+  })
   ipcMain.on('about', () => {
     const date = new Date()
     dialog.showMessageBox({

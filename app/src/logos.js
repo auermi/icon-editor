@@ -9,9 +9,18 @@ var logos = (() => {
       // Clean names without file extension
       return x.replace('.svg', '')
     })
-  return {
-    getAll: _getAll
+  var _getSVG = (uri) => {
+    return fs.readFileSync(uri, 'utf-8', (err,data) => {
+      if (err) throw error
+      return data
+    })
   }
+  return {
+    getAll: _getAll,
+    getSVG: _getSVG
+  }
+
+
 })()
 
 exports.logos = logos
