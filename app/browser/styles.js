@@ -23,9 +23,13 @@ const apply = () => {
       } else {
         circle.style.opacity = 0
         rect.style.opacity = 1
+        let bgColor = ''
         isValidHex(backgroundColor.value)
-          ? rect.setAttribute('fill', '#' + backgroundColor.value)
-          : rect.setAttribute('fill', '#000000')
+          ? bgColor =  '#' + backgroundColor.value
+          : bgColor = '#000000'
+
+        rect.setAttribute('fill', bgColor)
+        rect.setAttribute('stroke', bgColor)
         // Border Radius
         rect.setAttribute('rx', radius.value)
       }
