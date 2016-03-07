@@ -1,3 +1,5 @@
+'use strict'
+
 const remote = require('remote')
 const Menu = remote.require('menu')
 const ipcRenderer = require('electron').ipcRenderer

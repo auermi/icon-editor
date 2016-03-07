@@ -1,3 +1,5 @@
+'use strict'
+
 const dialog = require('electron').dialog
 const fs = require('fs')
 const gm = require('gm')
