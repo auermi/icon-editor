@@ -36,7 +36,7 @@ logoSelect.addEventListener('change', () => {
 })
 
 // Apply fill colors to svg
-var applyStyles = () => {
+const applyStyles = () => {
     const circle = document.querySelector('#logo circle')
     const rect = document.querySelector('#logo rect')
     const shape = document.querySelector('#logo path')
@@ -80,8 +80,10 @@ var applyStyles = () => {
 // Apply styles on click
 colorButton.addEventListener('click', applyStyles)
 
-var isValidHex = (x) => {
+const isValidHex = (x) => {
+  // If x isnt null
   if (x) {
+    // validate
     let re = new RegExp('[0-9a-f]{6}', 'i')
     if (x.length === 6 && re.test(x)) {
       return true

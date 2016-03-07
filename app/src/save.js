@@ -2,7 +2,7 @@ const dialog = require('electron').dialog
 const fs = require('fs')
 const gm = require('gm')
 
-var save = (arg) => {
+const save = (arg) => {
   const svg = arg
   const localuri = __dirname + '/../.cache/icon.svg'
   // If we have an svg
@@ -41,7 +41,7 @@ var save = (arg) => {
   }
 }
 
-var writeToPNG = (fileName, localuri, svg) => {
+const writeToPNG = (fileName, localuri, svg) => {
   // Write to SVG
   fs.writeFileSync(localuri, svg)
   // Write to PNG fom SVG

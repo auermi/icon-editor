@@ -2,9 +2,9 @@ const remote = require('remote')
 const Menu = remote.require('menu')
 const ipcRenderer = require('electron').ipcRenderer
 
-var init = function() {
-  // Menu Generation
-  var menu = Menu.buildFromTemplate([
+// Menu Generation
+const init = function() {
+  const menu = Menu.buildFromTemplate([
     {
       submenu: [
         {
