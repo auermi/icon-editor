@@ -7,29 +7,42 @@
   </head>
   <body>
     <div class="wrap">
-      <section class="half">
-      <select id="logoSelect">
-        <option disabled selected>--Select One--</select>
-      </select>
-      <br><br><br>
-      <section class="editor-section">
-        <h1>Background</h1>
-        <h2>Background Color</h2>
-        <input type="text" id="backgroundColor">
-        <div class="background-toggles">
-          <label>Active</label><input id="backgroundIsActive" type="checkbox" checked>
-          <label>Circular</label><input id="backgroundIsCircle" type="checkbox">
-        </div>
-        <h2>Background Border Radius</h2>
-        <input id="radius" type="range" value=0>
+      <section class="half editor">
+        <select id="logoSelect">
+          <option disabled selected>--Select One--</select>
+        </select>
+        <br>
+        <section class="editor-section">
+          <h1>Background</h1>
+          <h2>Background Color</h2>
+          <input type="text" id="backgroundColor">
+          <div class="background-toggles">
+            <label>Active</label><input id="backgroundIsActive" type="checkbox" checked>
+            <label>Circular</label><input id="backgroundIsCircle" type="checkbox">
+          </div>
+          <h2>Background Border Radius</h2>
+          <input id="radius" type="range" value=0>
+        </section>
+        <section class="editor-section">
+          <h1>Logo</h1>
+          <h2>Logo Color</h2>
+          <input type="text" id="logoColor">
+        </section>
+        <section class="editor-section">
+          <h1>Dimensions</h1>
+          <div class="editor-dimensions">
+            <div>
+              <h2>Width</h2>
+              <input type="text" id="iconWidth">
+            </div>
+            <div>
+             <h2>Height</h2>
+             <input type="text" id="iconHeight">
+            </div>
+          </div>
+        </section>
       </section>
-      <section class="editor-section">
-        <h1>Logo</h1>
-        <h2>Logo Color</h2>
-        <input type="text" id="logoColor">
-      </section>
-      </section>
-      <section class="half">
+      <section class="half logo-preview">
         <div id="logo" class="logo"><span>Select an Icon to Edit</span></div>
       </section>
     </div>
