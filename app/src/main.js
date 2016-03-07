@@ -18,7 +18,7 @@ app.on('ready', () => {
   mainWindow.loadURL('file://' + __dirname + '/../index.html')
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   // Generate list of logos
   const logosURI = __dirname + '/../res/logos/'
