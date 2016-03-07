@@ -10,6 +10,9 @@ const logos = (() => {
     }).map((x) => {
       // Clean names without file extension
       return x.replace('.svg', '')
+    }).map((x) => {
+      // Capitalize the first letter
+      return x.charAt(0).toUpperCase() + x.substring(1, x.length)
     })
   const _getSVG = (uri) => {
     return fs.readFileSync(uri, 'utf-8', (err,data) => {
