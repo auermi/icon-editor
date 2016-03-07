@@ -21,13 +21,12 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            files: '**/*.scss',
+            files: 'scss/*.scss',
             tasks: ['sass', 'cssmin']
         }
     })
     grunt.loadNpmTasks('grunt-contrib-sass')
     grunt.loadNpmTasks('grunt-contrib-cssmin')
     grunt.loadNpmTasks('grunt-contrib-watch')
-    grunt.registerTask('watch', 'watch')
     grunt.registerTask('default', ['sass', 'cssmin'])
 }

@@ -16,7 +16,6 @@ const backgroundIsCircle = document.getElementById('backgroundIsCircle')
 const colorButton = document.getElementById('colorButton')
 const logo = document.getElementById('logo')
 const radius = document.getElementById('radius')
-const radiusLabel = document.getElementById('radiusLabel')
 
 // Generate menu based on available icons
 ipcRenderer.on('getAllLogos', (event, message) => {

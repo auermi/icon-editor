@@ -6,15 +6,37 @@
     <link rel="stylesheet" href="master.css" charset="utf-8">
   </head>
   <body>
-    <select id="logoSelect">
-      <option disabled selected>--Select One--</select>
-    </select>
-    <br>
-    <label>Logo Color</label><input type="text" id="logoColor"><br>
-    <label>Background Color</label><input type="text" id="backgroundColor"><label>Is active?</label><input id="backgroundIsActive" type="checkbox" checked><label>Is Circle?</label><input id="backgroundIsCircle" type="checkbox"><br>
-    <label>Background Border Radius</label><input id="radius" type="range" value=0><span id="radiusLabel">0</span><br>
-    <button id="colorButton">Generate</button>
-    <div id="logo"></div>
+    <div class="wrap">
+      <section class="half">
+      <select id="logoSelect">
+        <option disabled selected>--Select One--</select>
+      </select>
+      <br><br><br>
+      <section class="editor-section">
+        <h1>Background</h1>
+        <h2>Background Color</h2>
+        <input type="text" id="backgroundColor">
+        <div class="background-toggles">
+          <label>Active</label><input id="backgroundIsActive" type="checkbox" checked>
+          <label>Circular</label><input id="backgroundIsCircle" type="checkbox">
+        </div>
+        <h2>Background Border Radius</h2>
+        <input id="radius" type="range" value=0>
+      </section>
+      <section class="editor-section">
+        <h1>Logo</h1>
+        <h2>Logo Color</h2>
+        <input type="text" id="logoColor">
+      </section>
+      <br>
+      <br>
+      <br>
+      <button id="colorButton">Generate</button>
+      </section>
+      <section class="half">
+        <div id="logo" class="logo"><span>Select an Icon to Edit</span></div>
+      </section>
+    </div>
     <script>require('./browser/renderer.js')</script>
   </body>
 </html>

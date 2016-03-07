@@ -1,6 +1,49 @@
-#logo {
-  margin-top: 32px;
-  img {
-    width: 128px;
+* {
+  font-family: sans-serif;
+}
+body {
+  margin: 0;
+}
+h1 {
+  font-size: 1.25em;
+  color: #555;
+}
+h2 {
+  font-size: 0.75em;
+  color: #555;
+}
+label {
+  font-size: 0.75em;
+  color: #555;
+}
+input {
+  outline: 0;
+  color: #555;
+  &[type="text"] {
+    height: 1.75em;
+    width: 12em;
+    padding: 2px 4px;
+    margin-bottom: 2em;
   }
+}
+.wrap {
+  display: flex;
+  width: 100%;
+  .half {
+    margin: auto;
+    width: 50%;
+    padding: 0 4%;
+  }
+}
+.logo {
+  text-align: center;
+  span {
+    color: #ababab
+  }
+}
+.editor-section {
+  margin-bottom: 3em;
+}
+.background-toggles {
+  margin-bottom: 2em;
 }

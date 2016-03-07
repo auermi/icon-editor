@@ -39,9 +39,6 @@ const apply = () => {
     isValidHex(logoColor.value)
       ? shape.setAttribute('fill', '#' + logoColor.value)
       : shape.setAttribute('fill', '#FFFFFF')
-
-    // Radius label is equal to slider value
-    radiusLabel.innerText = radius.value
 }
 
 const isValidHex = (x) => {
