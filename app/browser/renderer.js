@@ -52,12 +52,12 @@ var applyStyles = () => {
       if (backgroundIsCircle.checked) {
         circle.style.opacity = 1
         rect.style.opacity = 0
-        circle.style.fill = '#' + backgroundColor.value
+        circle.setAttribute('fill', '#' + backgroundColor.value)
       // is rect
       } else {
         circle.style.opacity = 0
         rect.style.opacity = 1
-        rect.style.fill = '#' + backgroundColor.value
+        rect.setAttribute('fill', '#' + backgroundColor.value)
         // Border Radius
         rect.setAttribute('rx', radius.value)
       }

@@ -2,8 +2,8 @@
 <svg width="256px" height="256px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g>
-            <rect fill="#000000" x="0" y="0" width="256" height="256" style="opacity: 1"></rect>
-            <circle fill="#000000" cx="128" cy="128" r="128" style="opacity: 0"></circle>
+            <rect fill="#000000" x="0" y="0" width="256" height="256" style="opacity: 1" stroke-opacity="0"></rect>
+            <circle fill="#000000" cx="128" cy="128" r="128" style="opacity: 0" stroke-opacity="0"></circle>
             <path d="M162.365449,255.260695 L162.365449,173.571594 L189.784496,173.571594 L193.890109,141.735902 L162.365449,141.735902 L162.365449,121.410824 C162.365449,112.193657 164.924909,105.912461 178.142103,105.912461 L195,105.905095 L195,77.4309965 C192.084491,77.0430259 182.077467,76.1762307 170.435074,76.1762307 C146.129614,76.1762307 129.489439,91.0124244 129.489439,118.257949 L129.489439,141.735902 L102,141.735902 L102,173.571594 L129.489439,173.571594 L129.489439,255.260695 L162.365449,255.260695 L162.365449,255.260695 Z" fill="#FFFFFF"></path>
         </g>
     </g>
