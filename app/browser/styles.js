@@ -57,4 +57,24 @@ const isValidHex = (x) => {
   return false
 }
 
+backgroundColor.addEventListener('input', () => {
+  if (backgroundColor.value.length === 6) {
+    this.apply()
+  }
+})
+backgroundIsActive.addEventListener('click', () => {
+  this.apply()
+})
+backgroundIsCircle.addEventListener('click', () => {
+  this.apply()
+})
+radius.addEventListener('change', () => {
+  this.apply()
+})
+logoColor.addEventListener('input', () => {
+  if (logoColor.value.length === 6) {
+    this.apply()
+  }
+})
+
 exports.apply = apply

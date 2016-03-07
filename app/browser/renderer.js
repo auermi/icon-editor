@@ -13,7 +13,6 @@ const logoColor = document.getElementById('logoColor')
 const backgroundColor = document.getElementById('backgroundColor')
 const backgroundIsActive = document.getElementById('backgroundIsActive')
 const backgroundIsCircle = document.getElementById('backgroundIsCircle')
-const colorButton = document.getElementById('colorButton')
 const logo = document.getElementById('logo')
 const radius = document.getElementById('radius')
 
@@ -35,6 +34,3 @@ logoSelect.addEventListener('change', () => {
     styles.apply()
   })
 })
-
-// Apply styles on click
-colorButton.addEventListener('click', styles.apply)
