@@ -31,12 +31,12 @@ logoSelect.addEventListener('change', () => {
   ipcRenderer.send('getSVG', logoSelect.value)
   ipcRenderer.on('sendLogoSVG', (event, message) => {
     logo.innerHTML = message
+    applyStyles()
   })
 })
 
 // Apply fill colors to svg
 var applyStyles = () => {
-  return () => {
     const circle = document.querySelector('#logo circle')
     const rect = document.querySelector('#logo rect')
     const shape = document.querySelector('#logo path')
@@ -45,19 +45,22 @@ var applyStyles = () => {
     if (logoSelect.value === logoSelect.children[0].value) {
       return
     }
-
     // is bg
     if (backgroundIsActive.checked) {
       // is circle
       if (backgroundIsCircle.checked) {
         circle.style.opacity = 1
         rect.style.opacity = 0
-        circle.setAttribute('fill', '#' + backgroundColor.value)
+        isValidHex(backgroundColor.value)
+          ? circle.setAttribute('fill', '#' + backgroundColor.value)
+          : circle.setAttribute('fill', '#000000')
       // is rect
       } else {
         circle.style.opacity = 0
         rect.style.opacity = 1
-        rect.setAttribute('fill', '#' + backgroundColor.value)
+        isValidHex(backgroundColor.value)
+          ? rect.setAttribute('fill', '#' + backgroundColor.value)
+          : rect.setAttribute('fill', '#000000')
         // Border Radius
         rect.setAttribute('rx', radius.value)
       }
@@ -72,8 +75,17 @@ var applyStyles = () => {
 
     // Radius label is equal to slider value
     radiusLabel.innerText = radius.value
-  }
 }
 
 // Apply styles on click
-colorButton.addEventListener('click', applyStyles())
+colorButton.addEventListener('click', applyStyles)
+
+var isValidHex = (x) => {
+  if (x) {
+    let re = new RegExp('[0-9a-f]{6}', 'i')
+    if (x.length === 6 && re.test(x)) {
+      return true
+    }
+  }
+  return false
+}
