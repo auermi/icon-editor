@@ -1,5 +1,5 @@
 {
-  "name": "icongenerator",
+  "name": "icon-editor",
   "version": "0.2.0",
   "description": "Generate icons based on user input",
   "main": "app/src/main.js",
