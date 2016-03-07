@@ -5,10 +5,9 @@ const fs = require('fs')
 const gm = require('gm')
 
 const save = (arg) => {
-  const svg = arg
   const localuri = __dirname + '/../.cache/icon.svg'
   // If we have an svg
-  if (svg !== '') {
+  if (arg[0] !== '') {
     // Save pop up
     dialog.showSaveDialog((fileName) => {
       // If we have filename
@@ -24,11 +23,11 @@ const save = (arg) => {
                 buttons: ['Yes', 'No']
               }, (response) => {
                 if (response !== 1) {
-                  writeToPNG(fileName, localuri, svg)
+                  writeToPNG(fileName, localuri, arg)
                 }
               })
             } else {
-              writeToPNG(fileName, localuri, svg)
+              writeToPNG(fileName, localuri, arg)
             }
           })
       }
@@ -43,16 +42,34 @@ const save = (arg) => {
   }
 }
 
-const writeToPNG = (fileName, localuri, svg) => {
+const writeToPNG = (fileName, localuri, arg) => {
+  const svg = arg[0]
   // Write to SVG
   fs.writeFileSync(localuri, svg)
   // Write to PNG fom SVG
-  gm(localuri)
-  .write(fileName + '.png', (err) => {
-    if (err) throw (err)
-    // Delete the SVG
-    fs.unlink(localuri)
-  })
+  // If invalid exist default to 256, 256
+  const width = parseInt(arg[1])
+  const height = parseInt(arg[2])
+  console.log(width)
+  console.log(height)
+  if (!width || !height && typeof width !== 'number' || typeof height !== 'number') {
+    gm(localuri)
+    .resizeExact(256, 256)
+    .write(fileName + '.png', (err) => {
+      if (err) throw (err)
+      // Delete the SVG
+      fs.unlink(localuri)
+    })
+  } else {
+    gm(localuri)
+    .resizeExact(width, height)
+    .write(fileName + '.png', (err) => {
+      if (err) throw (err)
+      // Delete the SVG
+      fs.unlink(localuri)
+    })
+  }
+
 }
 
 exports.save = save

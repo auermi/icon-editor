@@ -8,9 +8,11 @@ const ipcMain = electron.ipcMain
 const Save = require('./save.js')
 const Logos = require('./logos.js').logos
 
+let mainWindow
+
 app.on('ready', () => {
   // New Browser Window
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
       width: 800,
       height: 600
   })
