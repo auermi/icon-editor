@@ -5,7 +5,7 @@ const fs = require('fs')
 const gm = require('gm')
 
 const save = (arg) => {
-  const localuri = __dirname + '/../.cache/icon.svg'
+  const localuri = __dirname + '/../cache/icon.svg'
   // If we have an svg
   if (arg[0] !== '') {
     // Save pop up
@@ -54,9 +54,9 @@ const writeToPNG = (fileName, localuri, arg) => {
     gm(localuri)
     .resizeExact(256, 256)
     .write(fileName + '.png', (err) => {
-      if (err) throw (err)
       // Delete the SVG
       fs.unlink(localuri)
+      if (err) throw (err)
     })
   } else {
     gm(localuri)

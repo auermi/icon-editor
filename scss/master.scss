@@ -45,9 +45,6 @@ input {
 }
 .logo {
   text-align: center;
-  span {
-    color: #ababab
-  }
 }
 .size-label {
   text-align: center;
@@ -78,4 +75,8 @@ input {
 .editor {
   overflow-y: auto;
   height: 100%;
+}
+.select-instruction {
+  color: #ababab;
+  text-align: center
 }

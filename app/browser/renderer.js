@@ -36,5 +36,6 @@ logoSelect.addEventListener('change', () => {
     logo.innerHTML = message
     styles.apply()
     sizeLabel.style.display = 'block'
+    selectInstruction.style.display = 'none'
   })
 })
