@@ -2,7 +2,7 @@
 
 const dialog = require('electron').dialog
 const fs = require('fs')
-const gm = require('gm')
+const gm = require('gm').subClass({imageMagick: true})
 
 const save = (arg) => {
   const localuri = __dirname + '/../cache/icon.svg'
@@ -52,7 +52,7 @@ const writeToPNG = (fileName, localuri, arg) => {
   const height = parseInt(arg[2])
   if (!width || !height && typeof width !== 'number' || typeof height !== 'number') {
     gm(localuri)
-    .resizeExact(256, 256)
+    .resize(256, 256, '!')
     .write(fileName + '.png', (err) => {
       // Delete the SVG
       fs.unlink(localuri)
