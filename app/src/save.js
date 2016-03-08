@@ -9,7 +9,9 @@ const save = (arg) => {
   // If we have an svg
   if (arg[0] !== '') {
     // Save pop up
-    dialog.showSaveDialog((fileName) => {
+    dialog.showSaveDialog({
+      defaultPath: process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/' + arg[1]
+    }, (fileName) => {
       // If we have filename
       if (fileName) {
         // Does a file with the same name exist already?
@@ -48,8 +50,8 @@ const writeToPNG = (fileName, localuri, arg) => {
   fs.writeFileSync(localuri, svg)
   // Write to PNG fom SVG
   // If invalid exist default to 256, 256
-  const width = parseInt(arg[1])
-  const height = parseInt(arg[2])
+  const width = parseInt(arg[2])
+  const height = parseInt(arg[3])
   if (!width || !height && typeof width !== 'number' || typeof height !== 'number') {
     gm(localuri)
     .resize(256, 256, '!')

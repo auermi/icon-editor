@@ -21,7 +21,7 @@ const init = function() {
         {
           label: 'Save',
           accelerator: 'CmdOrCtrl+S',
-          click: () => { ipcRenderer.send('save', [logo.innerHTML, document.getElementById('iconWidth').value, document.getElementById('iconHeight').value]) }
+          click: () => { ipcRenderer.send('save', [logo.innerHTML, logoSelect.value, document.getElementById('iconWidth').value, document.getElementById('iconHeight').value]) }
         }
       ]
     },
