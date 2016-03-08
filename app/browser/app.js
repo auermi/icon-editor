@@ -4,7 +4,7 @@ const menu = require('./menu.js')
 const ipcRenderer = require('electron').ipcRenderer
 const styles = require('./styles.js')
 
-var init = () => {
+const init = () => {
   // Initialize Menu
   menu.init()
 
