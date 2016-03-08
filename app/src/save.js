@@ -50,8 +50,6 @@ const writeToPNG = (fileName, localuri, arg) => {
   // If invalid exist default to 256, 256
   const width = parseInt(arg[1])
   const height = parseInt(arg[2])
-  console.log(width)
-  console.log(height)
   if (!width || !height && typeof width !== 'number' || typeof height !== 'number') {
     gm(localuri)
     .resizeExact(256, 256)
