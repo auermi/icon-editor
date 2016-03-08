@@ -8,52 +8,46 @@ const apply = () => {
   const backgroundIsCircle = document.getElementById('backgroundIsCircle')
   const iconWidth = document.getElementById('iconWidth')
   const iconHeight = document.getElementById('iconHeight')
+  const sizeIsContrained = document.getElementById('sizeIsContrained')
   const circle = document.querySelector('#logo circle')
   const rect = document.querySelector('#logo rect')
   const shape = document.querySelector('#logo path')
 
-    // Should disable fill buttons eventually but this works for now
-    if (logoSelect.value === logoSelect.children[0].value) {
-      return
-    }
-    // is bg
-    if (backgroundIsActive.checked) {
-      // is circle
-      if (backgroundIsCircle.checked) {
-        circle.style.opacity = 1
-        rect.style.opacity = 0
-        isValidHex(backgroundColor.value)
-          ? circle.setAttribute('fill', '#' + backgroundColor.value)
-          : circle.setAttribute('fill', '#000000')
-        rect.setAttribute('fill', '')
-        rect.setAttribute('stroke', '')
-      // is rect
-      } else {
-        circle.style.opacity = 0
-        rect.style.opacity = 1
-        let bgColor = ''
-        isValidHex(backgroundColor.value)
-          ? bgColor =  '#' + backgroundColor.value
-          : bgColor = '#000000'
-        rect.setAttribute('fill', bgColor)
-        rect.setAttribute('stroke', bgColor)
-        // Border Radius
-        rect.setAttribute('rx', document.getElementById('radius').value)
-      }
-    // no bg
-    } else {
+  // Should disable fill buttons eventually but this works for now
+  if (logoSelect.value === logoSelect.children[0].value) {
+    return
+  }
+  // is bg
+  if (backgroundIsActive.checked) {
+    // is circle or rect
+    if (backgroundIsCircle.checked) {
+      circle.style.opacity = 1
       rect.style.opacity = 0
+      isValidHex(backgroundColor.value) ? circle.setAttribute('fill', '#' + backgroundColor.value) : circle.setAttribute('fill', '#000000')
+      rect.setAttribute('fill', '')
+      rect.setAttribute('stroke', '')
+    } else {
       circle.style.opacity = 0
+      rect.style.opacity = 1
+      let bgColor = ''
+      isValidHex(backgroundColor.value) ? bgColor = '#' + backgroundColor.value : bgColor = '#000000'
+      rect.setAttribute('fill', bgColor)
+      rect.setAttribute('stroke', bgColor)
+        // Border Radius
+      rect.setAttribute('rx', document.getElementById('radius').value)
     }
+    // no bg
+  } else {
+    rect.style.opacity = 0
+    circle.style.opacity = 0
+  }
 
-    // Fill logo
-    isValidHex(logoColor.value)
-      ? shape.setAttribute('fill', '#' + logoColor.value)
-      : shape.setAttribute('fill', '#FFFFFF')
+  // Fill logo
+  isValidHex(logoColor.value) ? shape.setAttribute('fill', '#' + logoColor.value) : shape.setAttribute('fill', '#FFFFFF')
 
-    // If there's an svg resize it
-    if(document.querySelector('svg'))
-      resize(iconWidth.value, iconHeight.value)
+  // If there's an svg resize it
+  if (document.querySelector('svg'))
+    resize(iconWidth.value, iconHeight.value)
 }
 
 const isValidHex = (x) => {
@@ -71,7 +65,7 @@ const isValidHex = (x) => {
 const resize = (w, h) => {
   let width = parseInt(w)
   let height = parseInt(h)
-  // If width or height are invalid make them 256
+    // If width or height are invalid make them 256
   if (!width || width === '' || typeof width !== 'number') {
     width = 256
   }
@@ -103,6 +97,23 @@ const resize = (w, h) => {
   document.getElementById('sizeLabel').innerHTML = Math.ceil(width) + 'px x ' + Math.ceil(height) + 'px'
 }
 
+const constrain = () => {
+  if (sizeIsContrained.checked) {
+    iconHeight.disabled = true
+    if (typeof parseInt(iconWidth.value) === 'number') {
+      iconHeight.value = iconWidth.value
+    } else if (typeof parseInt(iconHeight.value) === 'number') {
+      iconWidth.value = iconHeight.value
+    } else {
+      iconHeight.value = ''
+      iconWidth.value = ''
+    }
+    this.apply()
+  } else {
+    iconHeight.disabled = false
+  }
+}
+
 // Listeners for days
 [
   backgroundColor,
@@ -111,6 +122,7 @@ const resize = (w, h) => {
   iconWidth
 ].forEach((x) => {
   x.addEventListener('input', () => {
+    constrain()
     this.apply()
   })
 })
@@ -122,6 +134,9 @@ backgroundIsCircle.addEventListener('click', () => {
 })
 document.getElementById('radius').addEventListener('change', () => {
   this.apply()
+})
+sizeIsContrained.addEventListener('click', () => {
+  constrain()
 })
 
 exports.apply = apply
