@@ -14,30 +14,38 @@
         <br>
         <section class="editor-section">
           <h1>Background</h1>
-          <h2>Background Color</h2>
-          <input type="text" id="backgroundColor">
-          <div class="background-toggles">
-            <label>Active</label><input id="backgroundIsActive" type="checkbox" checked>
-            <label>Circular</label><input id="backgroundIsCircle" type="checkbox">
+          <div class="editor-subsection">
+            <h2>Color</h2>
+            <input type="text" id="backgroundColor">
+            <div class="editor-subsection">
+              <label>Active</label><input id="backgroundIsActive" type="checkbox" checked>
+              <label>Circular</label><input id="backgroundIsCircle" type="checkbox">
+            </div>
           </div>
-          <h2>Background Border Radius</h2>
-          <input id="radius" type="range" value=0>
+          <div class="editor-subsection">
+            <h2>Border Radius</h2>
+            <input id="radius" type="range" value=0>
+          </div>
         </section>
         <section class="editor-section">
           <h1>Logo</h1>
-          <h2>Logo Color</h2>
-          <input type="text" id="logoColor">
+          <div class="editor-subsection">
+            <h2>Color</h2>
+            <input type="text" id="logoColor">
+          </div>
         </section>
         <section class="editor-section">
           <h1>Dimensions</h1>
-          <div class="editor-dimensions">
-            <div>
-              <h2>Width</h2>
-              <input type="text" id="iconWidth" placeholder="256">
-            </div>
-            <div>
-             <h2>Height</h2>
-             <input type="text" id="iconHeight" placeholder="256">
+          <div class="editor-subsection">
+            <div class="editor-dimensions">
+              <div>
+                <h2>Width</h2>
+                <input type="text" id="iconWidth" placeholder="256">
+              </div>
+              <div>
+               <h2>Height</h2>
+               <input type="text" id="iconHeight" placeholder="256">
+              </div>
             </div>
           </div>
         </section>

@@ -10,6 +10,7 @@ body {
 h1 {
   font-size: 1.25em;
   color: #555;
+  margin: 0.25em 0;
 }
 h2 {
   font-size: 0.75em;
@@ -26,7 +27,6 @@ input {
     height: 1.75em;
     width: 12em;
     padding: 2px 4px;
-    margin-bottom: 2em;
   }
 }
 .wrap {
@@ -50,10 +50,13 @@ input {
   }
 }
 .editor-section {
-  margin-bottom: 3em;
-}
-.background-toggles {
-  margin-bottom: 2em;
+  margin-top: 2.5em;
+  > div {
+    padding-left: 4%;
+  }
+  .editor-subsection {
+    margin-top: 0.75em;
+  }
 }
 .editor-dimensions {
   display: flex;
@@ -61,6 +64,7 @@ input {
   > div {
     width: 40%;
     margin: auto;
+    margin-left: 0;
   }
 }
 .editor {
