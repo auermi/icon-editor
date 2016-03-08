@@ -49,6 +49,14 @@ input {
     color: #ababab
   }
 }
+.size-label {
+  text-align: center;
+  margin: 0 auto;
+  color: #ababab;
+  margin-top: 1em;
+  font-size: 0.75em;
+  display: none;
+}
 .editor-section {
   margin-top: 2.5em;
   > div {

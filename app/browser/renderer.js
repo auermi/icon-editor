@@ -15,6 +15,9 @@ const backgroundIsActive = document.getElementById('backgroundIsActive')
 const backgroundIsCircle = document.getElementById('backgroundIsCircle')
 const logo = document.getElementById('logo')
 const radius = document.getElementById('radius')
+const sizeLabel = document.getElementById('sizeLabel')
+const iconWidth = document.getElementById('iconWidth')
+const iconHeight = document.getElementById('iconHeight')
 
 // Generate menu based on available icons
 ipcRenderer.on('getAllLogos', (event, message) => {
@@ -32,5 +35,6 @@ logoSelect.addEventListener('change', () => {
   ipcRenderer.on('sendLogoSVG', (event, message) => {
     logo.innerHTML = message
     styles.apply()
+    sizeLabel.style.display = 'block'
   })
 })

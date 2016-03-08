@@ -76,5 +76,41 @@ logoColor.addEventListener('input', () => {
     this.apply()
   }
 })
+iconHeight.addEventListener('input', () => {
+  resize(iconWidth.value, iconHeight.value)
+})
+iconWidth.addEventListener('input', () => {
+  resize(iconWidth.value, iconHeight.value)
+})
+var resize = (w, h) => {
+  let width = parseInt(w)
+  let height = parseInt(h)
+  if (!width || width === '' || typeof width !== 'number') {
+    width = 256
+  }
+  if (!height || height === '' || typeof height !== 'number') {
+    height = 256
+  }
+
+  if (width >= 256 || height >= 256) {
+    if (width > height) {
+      const ratio = height / width
+      width = 256
+      height = 256 * ratio
+    } else if (height > width) {
+      const ratio = height / width
+      height = 256
+      width = 256 / ratio
+    } else if (height === width) {
+      height = 256
+      width = 256
+    }
+  }
+  const widthScale = width / 256
+  const heightScale = height / 256
+
+  document.querySelector('svg').style.transform = 'scaleX(' + widthScale + ') scaleY(' + heightScale + ')'
+  sizeLabel.innerHTML = Math.ceil(width) + 'px x ' + Math.ceil(height) + 'px'
+}
 
 exports.apply = apply
