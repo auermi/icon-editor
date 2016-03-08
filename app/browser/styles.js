@@ -25,6 +25,8 @@ const apply = () => {
         isValidHex(backgroundColor.value)
           ? circle.setAttribute('fill', '#' + backgroundColor.value)
           : circle.setAttribute('fill', '#000000')
+        rect.setAttribute('fill', '')
+        rect.setAttribute('stroke', '')
       // is rect
       } else {
         circle.style.opacity = 0
@@ -33,7 +35,6 @@ const apply = () => {
         isValidHex(backgroundColor.value)
           ? bgColor =  '#' + backgroundColor.value
           : bgColor = '#000000'
-
         rect.setAttribute('fill', bgColor)
         rect.setAttribute('stroke', bgColor)
         // Border Radius
