@@ -43,6 +43,9 @@ const apply = () => {
     isValidHex(logoColor.value)
       ? shape.setAttribute('fill', '#' + logoColor.value)
       : shape.setAttribute('fill', '#FFFFFF')
+
+    if(document.querySelector('svg'))
+      resize(iconWidth.value, iconHeight.value)
 }
 
 const isValidHex = (x) => {
@@ -77,10 +80,10 @@ logoColor.addEventListener('input', () => {
   }
 })
 iconHeight.addEventListener('input', () => {
-  resize(iconWidth.value, iconHeight.value)
+  this.apply()
 })
 iconWidth.addEventListener('input', () => {
-  resize(iconWidth.value, iconHeight.value)
+  this.apply()
 })
 var resize = (w, h) => {
   let width = parseInt(w)
