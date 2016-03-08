@@ -24,8 +24,8 @@ const init = function() {
           click: () => {
             ipcRenderer.send('save',
             {
-              svg: logo.innerHTML,
-              name: logoSelect.value,
+              svg: document.getElementById('logo').innerHTML,
+              name: document.getElementById('logoSelect').value,
               width: document.getElementById('iconWidth').value,
               height: document.getElementById('iconHeight').value
             }

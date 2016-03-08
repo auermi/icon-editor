@@ -1,10 +1,16 @@
 'use strict'
 
-// Apply fill colors to svg
+// Apply styles
 const apply = () => {
-    const circle = document.querySelector('#logo circle')
-    const rect = document.querySelector('#logo rect')
-    const shape = document.querySelector('#logo path')
+  const logoColor = document.getElementById('logoColor')
+  const backgroundColor = document.getElementById('backgroundColor')
+  const backgroundIsActive = document.getElementById('backgroundIsActive')
+  const backgroundIsCircle = document.getElementById('backgroundIsCircle')
+  const iconWidth = document.getElementById('iconWidth')
+  const iconHeight = document.getElementById('iconHeight')
+  const circle = document.querySelector('#logo circle')
+  const rect = document.querySelector('#logo rect')
+  const shape = document.querySelector('#logo path')
 
     // Should disable fill buttons eventually but this works for now
     if (logoSelect.value === logoSelect.children[0].value) {
@@ -31,7 +37,7 @@ const apply = () => {
         rect.setAttribute('fill', bgColor)
         rect.setAttribute('stroke', bgColor)
         // Border Radius
-        rect.setAttribute('rx', radius.value)
+        rect.setAttribute('rx', document.getElementById('radius').value)
       }
     // no bg
     } else {
@@ -44,6 +50,7 @@ const apply = () => {
       ? shape.setAttribute('fill', '#' + logoColor.value)
       : shape.setAttribute('fill', '#FFFFFF')
 
+    // If there's an svg resize it
     if(document.querySelector('svg'))
       resize(iconWidth.value, iconHeight.value)
 }
@@ -60,34 +67,10 @@ const isValidHex = (x) => {
   return false
 }
 
-backgroundColor.addEventListener('input', () => {
-  if (backgroundColor.value.length === 6) {
-    this.apply()
-  }
-})
-backgroundIsActive.addEventListener('click', () => {
-  this.apply()
-})
-backgroundIsCircle.addEventListener('click', () => {
-  this.apply()
-})
-radius.addEventListener('change', () => {
-  this.apply()
-})
-logoColor.addEventListener('input', () => {
-  if (logoColor.value.length === 6) {
-    this.apply()
-  }
-})
-iconHeight.addEventListener('input', () => {
-  this.apply()
-})
-iconWidth.addEventListener('input', () => {
-  this.apply()
-})
-var resize = (w, h) => {
+const resize = (w, h) => {
   let width = parseInt(w)
   let height = parseInt(h)
+  // If width or height are invalid make them 256
   if (!width || width === '' || typeof width !== 'number') {
     width = 256
   }
@@ -95,6 +78,7 @@ var resize = (w, h) => {
     height = 256
   }
 
+  // Essentially Contstraining the svg inside a 256px box
   if (width >= 256 || height >= 256) {
     if (width > height) {
       const ratio = height / width
@@ -112,8 +96,31 @@ var resize = (w, h) => {
   const widthScale = width / 256
   const heightScale = height / 256
 
+  // Scale the svg based on the supplied dimensions
   document.querySelector('svg').style.transform = 'scaleX(' + widthScale + ') scaleY(' + heightScale + ')'
-  sizeLabel.innerHTML = Math.ceil(width) + 'px x ' + Math.ceil(height) + 'px'
+  // Update label below svg
+  document.getElementById('sizeLabel').innerHTML = Math.ceil(width) + 'px x ' + Math.ceil(height) + 'px'
 }
+
+// Listeners for days
+[
+  backgroundColor,
+  logoColor,
+  iconHeight,
+  iconWidth
+].forEach((x) => {
+  x.addEventListener('input', () => {
+    this.apply()
+  })
+})
+backgroundIsActive.addEventListener('click', () => {
+  this.apply()
+})
+backgroundIsCircle.addEventListener('click', () => {
+  this.apply()
+})
+document.getElementById('radius').addEventListener('change', () => {
+  this.apply()
+})
 
 exports.apply = apply
