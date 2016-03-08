@@ -7,10 +7,10 @@ const gm = require('gm').subClass({imageMagick: true})
 const save = (arg) => {
   const localuri = __dirname + '/../cache/icon.svg'
   // If we have an svg
-  if (arg[0] !== '') {
+  if (arg.svg !== '') {
     // Save pop up
     dialog.showSaveDialog({
-      defaultPath: process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/' + arg[1]
+      defaultPath: process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'] + '/' + arg.name
     }, (fileName) => {
       // If we have filename
       if (fileName) {
@@ -45,13 +45,12 @@ const save = (arg) => {
 }
 
 const writeToPNG = (fileName, localuri, arg) => {
-  const svg = arg[0]
   // Write to SVG
-  fs.writeFileSync(localuri, svg)
+  fs.writeFileSync(localuri, arg.svg)
   // Write to PNG fom SVG
   // If invalid exist default to 256, 256
-  const width = parseInt(arg[2])
-  const height = parseInt(arg[3])
+  const width = parseInt(arg.width)
+  const height = parseInt(arg.height)
   if (!width || !height && typeof width !== 'number' || typeof height !== 'number') {
     gm(localuri)
     .resize(256, 256, '!')
