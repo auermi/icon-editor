@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="256px" height="256px" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <rect fill="#000000" x="0" y="0" width="256" height="256"></rect>
+    <circle fill="#000000" cx="128" cy="128" r="128" style="opacity: 0" stroke-opacity="0"></circle>
+    <g transform="translate(84.546117, 54.599515)">
+        <path d="M0.41490534,73.7918083 L0.402347087,122.765129 L43.9538835,98.453801 L43.9538835,147.825604 L87.3440947,123.087296 L87.3320194,74.1419903 L43.9538835,98.453801 L0.41490534,73.7918083 Z M87.3320194,74.1419903 L87.3440947,25.1686699 L43.7930413,49.4799976 L43.7930413,0.108677184 L0.402830097,24.8465024 L0.41490534,73.7918083 L43.7930413,49.4799976 L87.3320194,74.1419903 Z" fill="#FFFFFF"></path>
+        <polyline fill="#CCCCCC" points="43.9538835 98.453801 43.7930413 49.4799976 0.41490534 73.7918083"></polyline>
+    </g>
+</svg>
