@@ -11,8 +11,8 @@ const apply = () => {
   const sizeIsContrained = document.getElementById('sizeIsContrained')
   const circle = document.querySelector('#logo circle')
   const rect = document.querySelector('#logo rect')
-  const shape = document.querySelector('#logo path')
-
+  const shapes = [].slice.call(document.getElementById('logo').getElementsByTagName('path'))
+  
   // Should disable fill buttons eventually but this works for now
   if (logoSelect.value === logoSelect.children[0].value) {
     return
@@ -43,7 +43,11 @@ const apply = () => {
   }
 
   // Fill logo
-  isValidHex(logoColor.value) ? shape.setAttribute('fill', '#' + logoColor.value) : shape.setAttribute('fill', '#FFFFFF')
+  if (isValidHex(logoColor.value)) {
+    shapes.forEach(x => x.setAttribute('fill', '#' + logoColor.value))
+  } else {
+    shapes.forEach(x => x.setAttribute('fill', '#FFFFFF'))
+  }
 
   // If there's an svg resize it
   if (document.querySelector('svg'))
