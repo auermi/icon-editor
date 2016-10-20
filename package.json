@@ -24,7 +24,7 @@
     "grunt-contrib-watch": "^0.6.1"
   },
   "dependencies": {
-    "electron": "^1.4.4",
-    "gm": "^1.21.1"
+    "electron": "1.4.4",
+    "gm": "1.23.0"
   }
 }
