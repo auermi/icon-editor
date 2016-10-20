@@ -1,7 +1,7 @@
 'use strict'
 
 const menu = require('./menu.js')
-const ipcRenderer = require('electron').ipcRenderer
+const {ipcRenderer} = require('electron')
 const styles = require('./styles.js')
 
 const init = () => {

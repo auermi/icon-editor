@@ -1,6 +1,6 @@
 'use strict'
 
-const dialog = require('electron').dialog
+const {dialog} = require('electron')
 const fs = require('fs')
 const gm = require('gm').subClass({imageMagick: true})
 

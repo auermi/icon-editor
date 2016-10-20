@@ -1,7 +1,6 @@
 'use strict'
 
-const remote = require('remote')
-const Menu = remote.require('menu')
+const {Menu} = require('electron').remote
 const ipcRenderer = require('electron').ipcRenderer
 
 // Menu Generation

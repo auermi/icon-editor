@@ -1,10 +1,9 @@
 'use strict'
 
-const electron = require('electron')
-const app = electron.app
-const BrowserWindow = require('browser-window')
-const dialog = electron.dialog
-const ipcMain = electron.ipcMain
+const {BrowserWindow} = require('electron')
+const {app} = require('electron')
+const {dialog} = require('electron')
+const {ipcMain} = require('electron')
 const Save = require('./save.js')
 const Logos = require('./logos.js').logos
 
@@ -20,7 +19,7 @@ app.on('ready', () => {
   mainWindow.loadURL('file://' + __dirname + '/../index.html')
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   // Generate list of logos
   const logosURI = __dirname + '/../res/logos/'
