@@ -1,6 +1,6 @@
 {
   "name": "icon-editor",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Generate icons based on user input",
   "main": "app/src/main.js",
   "scripts": {
