@@ -1,12 +1,11 @@
 'use strict'
 
-const menu = require('./menu.js')
-const {ipcRenderer} = require('electron')
+const {
+  ipcRenderer
+} = require('electron')
 const styles = require('./styles.js')
 
 const init = () => {
-  // Initialize Menu
-  menu.init()
 
   const logoSelect = document.getElementById('logoSelect')
 
