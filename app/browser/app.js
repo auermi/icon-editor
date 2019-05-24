@@ -4,10 +4,13 @@ const {
   ipcRenderer
 } = require('electron')
 const styles = require('./styles.js')
+const
+  exportLogo = require('./exportLogo.js');
 
 const init = () => {
 
-  const logoSelect = document.getElementById('logoSelect')
+  const logoSelect = document.getElementById('logoSelect');
+  const exportButton = document.getElementById('logoExport');
 
   // Generate menu based on available icons
   ipcRenderer.on('getAllLogos', (event, message) => {
@@ -29,6 +32,10 @@ const init = () => {
       selectInstruction.style.display = 'none'
     })
   })
+
+  exportButton.addEventListener('click', () => {
+    ipcRenderer.send('save', exportLogo.exportLogo());
+  });
 }
 
 

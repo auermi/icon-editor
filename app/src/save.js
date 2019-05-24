@@ -1,8 +1,12 @@
 'use strict'
 
-const {dialog} = require('electron')
+const {
+  dialog
+} = require('electron')
 const fs = require('fs')
-const gm = require('gm').subClass({imageMagick: true})
+const gm = require('gm').subClass({
+  imageMagick: true
+})
 
 const save = (arg) => {
   const localuri = __dirname + '/../cache/icon.svg'
@@ -15,23 +19,23 @@ const save = (arg) => {
       // If we have filename
       if (fileName) {
         // Does a file with the same name exist already?
-          // console.log(fs.readFile(fileName + '.png', (err, data) => { return err }))
-          fs.readFile(fileName + '.png', (err, data) => {
-            if (!err) {
-              // It exists, show pop up -> if yes continue overrwrite, if no, cancel
-              dialog.showMessageBox({
-                message: 'File with name: ' + fileName + '.png already exists',
-                detail: 'Do you want to overwrite it?',
-                buttons: ['Yes', 'No']
-              }, (response) => {
-                if (response !== 1) {
-                  writeToPNG(fileName, localuri, arg)
-                }
-              })
-            } else {
-              writeToPNG(fileName, localuri, arg)
-            }
-          })
+        // console.log(fs.readFile(fileName + '.png', (err, data) => { return err }))
+        fs.readFile(fileName + '.png', (err, data) => {
+          if (!err) {
+            // It exists, show pop up -> if yes continue overrwrite, if no, cancel
+            dialog.showMessageBox({
+              message: 'File with name: ' + fileName + '.png already exists',
+              detail: 'Do you want to overwrite it?',
+              buttons: ['Yes', 'No']
+            }, (response) => {
+              if (response !== 1) {
+                writeToPNG(fileName, localuri, arg)
+              }
+            })
+          } else {
+            writeToPNG(fileName, localuri, arg)
+          }
+        })
       }
     })
   } else {
@@ -53,20 +57,25 @@ const writeToPNG = (fileName, localuri, arg) => {
   const height = parseInt(arg.height)
   if (!width || !height && typeof width !== 'number' || typeof height !== 'number') {
     gm(localuri)
-    .resize(256, 256, '!')
-    .write(fileName + '.png', (err) => {
-      // Delete the SVG
-      fs.unlink(localuri)
-      if (err) throw (err)
-    })
+      .resize(256, 256, '!')
+      .write(fileName + '.png', (err) => {
+        if (err) throw (err)
+        // Delete the SVG
+        fs.unlink(localuri, (err) => {
+          if (err) throw (err)
+        });
+      })
   } else {
     gm(localuri)
-    .resizeExact(width, height)
-    .write(fileName + '.png', (err) => {
-      if (err) throw (err)
-      // Delete the SVG
-      fs.unlink(localuri)
-    })
+      .resizeExact(width, height)
+      .write(fileName + '.png', (err) => {
+        if (err) throw (err)
+        // Delete the SVG
+        fs.unlink(localuri, (err) => {
+          if (err) throw (err)
+        });
+
+      })
   }
 
 }
