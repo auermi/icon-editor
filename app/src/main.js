@@ -7,6 +7,8 @@ const {
   BrowserWindow
 } = require('electron')
 
+const path = require('path');
+
 const Save = require('./save.js')
 const Logos = require('./logos.js').logos
 
@@ -40,8 +42,14 @@ app.on('ready', () => {
   // Generate list of logos
   const logosURI = __dirname + '/../res/logos/'
   console.log(__dirname);
+  console.log(logosURI);
+
+  const fix = path.resolve(__dirname, './../res/logos/');
+
+  console.log(fix);
+
   mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.webContents.send('getAllLogos', Logos.getAll(logosURI))
+    mainWindow.webContents.send('getAllLogos', Logos.getAll(fix))
   })
   // Renderer Listeners
   ipcMain.on('save', (event, arg) => {

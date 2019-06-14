@@ -4,7 +4,9 @@
   "description": "Generate icons based on user input",
   "main": "app/src/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -12,12 +14,21 @@
   },
   "author": "Michael Auer",
   "license": "MIT",
+  "build": {
+    "appId": "your.id",
+    "mac": {
+      "category": "your.app.category.type"
+    }
+  },
   "bugs": {
     "url": "https://github.com/auermi/icon-editor/issues"
   },
   "homepage": "https://github.com/auermi/icon-editor",
-  "dependencies": {
+  "devDependencies": {
     "electron": "5.0.1",
+    "electron-builder": "^20.43.0"
+  },
+  "dependencies": {
     "gm": "^1.23.1"
   }
 }

@@ -34,3 +34,8 @@ node_modules
 
 # Cached SVGs
 app/.cache/*.svg
+
+# Dist files
+dist
+
+.DS_Store
