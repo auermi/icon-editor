@@ -40,13 +40,7 @@ app.on('ready', () => {
   mainWindow.webContents.openDevTools();
 
   // Generate list of logos
-  const logosURI = __dirname + '/../res/logos/'
-  console.log(__dirname);
-  console.log(logosURI);
-
   const fix = path.resolve(__dirname, './../res/logos/');
-
-  console.log(fix);
 
   mainWindow.webContents.on('did-finish-load', () => {
     mainWindow.webContents.send('getAllLogos', Logos.getAll(fix))
@@ -56,7 +50,8 @@ app.on('ready', () => {
     Save.save(arg)
   })
   ipcMain.on('getSVG', (event, arg) => {
-    const uri = logosURI + arg + '.svg'
+    const uri = fix + '/' + arg + '.svg'
+    mainWindow.webContents.send('log', uri);
     mainWindow.webContents.send('sendLogoSVG', Logos.getSVG(uri))
   })
   ipcMain.on('about', () => {

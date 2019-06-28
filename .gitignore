@@ -37,5 +37,6 @@ app/.cache/*.svg
 
 # Dist files
 dist
+icon-editor-darwin-x64
 
 .DS_Store

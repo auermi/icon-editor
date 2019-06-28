@@ -20,7 +20,11 @@ const init = () => {
       node.appendChild(document.createTextNode(x))
       logoSelect.appendChild(node)
     })
-  })
+  });
+
+  ipcRenderer.on('log', (event, message) => {
+    console.log(message);
+  });
 
   // When a new logo is selected, inject it
   logoSelect.addEventListener('change', () => {

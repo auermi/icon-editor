@@ -8,8 +8,11 @@ const gm = require('gm').subClass({
   imageMagick: true
 })
 
+const path = require('path');
+
 const save = (arg) => {
-  const localuri = __dirname + '/../cache/icon.svg'
+  const localuri = path.resolve(__dirname, './../cache/icon.svg');
+  // const localuri = __dirname + '/../cache/icon.svg'
   // If we have an svg
   if (arg.svg !== '') {
     // Save pop up
