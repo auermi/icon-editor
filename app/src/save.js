@@ -10,10 +10,11 @@ const gm = require('gm').subClass({
 
 const path = require('path');
 
-const save = (arg) => {
+const save = (arg, win) => {
   const localuri = path.resolve(__dirname, './../cache/icon.svg');
   // const localuri = __dirname + '/../cache/icon.svg'
   // If we have an svg
+  console.log(win);
   if (arg.svg !== '') {
     // Save pop up
     dialog.showSaveDialog({
@@ -32,11 +33,11 @@ const save = (arg) => {
               buttons: ['Yes', 'No']
             }, (response) => {
               if (response !== 1) {
-                writeToPNG(fileName, localuri, arg)
+                writeToPNG(fileName, localuri, arg, win)
               }
             })
           } else {
-            writeToPNG(fileName, localuri, arg)
+            writeToPNG(fileName, localuri, arg, win)
           }
         })
       }
@@ -51,8 +52,11 @@ const save = (arg) => {
   }
 }
 
-const writeToPNG = (fileName, localuri, arg) => {
+const writeToPNG = (fileName, localuri, arg, win) => {
   // Write to SVG
+  win.webContents.send('log', fileName);
+  win.webContents.send('log', localuri);
+  win.webContents.send('log', arg);
   fs.writeFileSync(localuri, arg.svg)
   // Write to PNG fom SVG
   // If invalid exist default to 256, 256

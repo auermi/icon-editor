@@ -5,7 +5,6 @@
   "main": "app/src/main.js",
   "scripts": {
     "start": "electron .",
-    "pack": "electron-builder --dir",
     "dist": "electron-packager ."
   },
   "repository": {

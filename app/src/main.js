@@ -47,7 +47,7 @@ app.on('ready', () => {
   })
   // Renderer Listeners
   ipcMain.on('save', (event, arg) => {
-    Save.save(arg)
+    Save.save(arg, mainWindow)
   })
   ipcMain.on('getSVG', (event, arg) => {
     const uri = fix + '/' + arg + '.svg'
